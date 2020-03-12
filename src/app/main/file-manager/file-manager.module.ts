@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthGuard } from 'app/auth/auth.guard';
 const routes: Routes = [
     {
         path: 'file-manager',
@@ -29,7 +30,8 @@ const routes: Routes = [
         children: [],
         resolve: {
             files: FileManagerService
-        }
+        },
+        canActivate: [AuthGuard]
     }
 ];
 

@@ -8,7 +8,6 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
-import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
     selector     : 'toolbar',
@@ -41,7 +40,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
         private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
         private _translateService: TranslateService,
-        private oauthService: OAuthService
     )
     {
         // Set the defaults
@@ -161,8 +159,5 @@ export class ToolbarComponent implements OnInit, OnDestroy
 
         // Use the selected language for translations
         this._translateService.use(lang.id);
-    }
-    logout() {
-        this.oauthService.logOut();
     }
 }

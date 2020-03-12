@@ -5,8 +5,8 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
 import { Router } from '@angular/router';
-import { OAuthService } from 'angular-oauth2-oidc';
 import { AppService } from 'app/app.service';
+import { AuthService } from 'app/auth/auth.service';
 
 @Component({
     selector: 'app-landing-page',
@@ -29,8 +29,8 @@ export class LandingPageComponent implements OnInit {
         private _formBuilder: FormBuilder,
         private _router: Router,
         public _fuseSplashScreenService: FuseSplashScreenService,
-        private oauthService: OAuthService,
-        public appService: AppService
+        public appService: AppService,
+        public auth: AuthService
     ) {
         // Configure the layout
         this._fuseConfigService.config = {
@@ -54,18 +54,6 @@ export class LandingPageComponent implements OnInit {
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks
     // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On initprivate oauthService: OAuthService,
-     */
     ngOnInit(): void {
-        this.loginForm = this._formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', Validators.required]
-        });
-    }
-
-    login() {
-        this.oauthService.initImplicitFlow();
     }
 }

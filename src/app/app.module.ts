@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { TranslateModule } from '@ngx-translate/core';
 import { environment } from '../environments/environment';
 import 'hammerjs';
@@ -46,12 +45,6 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
-        OAuthModule.forRoot({
-            resourceServer: {
-                allowedUrls: [ environment.webapiURL ],
-                sendAccessToken: true
-            }
-        }),
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FakeDbService, {
             delay: 0,
@@ -82,7 +75,6 @@ const appRoutes: Routes = [
     providers: [
         AuthGuard,
         { provide: APP_BASE_HREF, useValue: '/'},
-        { provide: OAuthStorage, useValue: localStorage },
         { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
     ],

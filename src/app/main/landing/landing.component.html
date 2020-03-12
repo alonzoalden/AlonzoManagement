@@ -16,8 +16,11 @@
             </div>
 
             <div style="width: 100%; margin: 0 auto; margin-bottom: 16px; display: block;">
-                <button (click)="login()" style="width: 100%" mat-raised-button color="accent" class="submit-button" aria-label="LOGIN">
+                <button (click)="auth.login()" style="width: 100%" mat-raised-button color="accent" class="submit-button" aria-label="LOGIN">
                     LOGIN
+                </button>
+                <button (click)="auth.logout()" style="width: 100%" mat-raised-button color="accent" class="submit-button" aria-label="LOGIN">
+                    LOGOUT
                 </button>
             </div>
         </div>
